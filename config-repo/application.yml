@@ -23,8 +23,8 @@ spring:
     port: 5672
     host: 127.0.0.1
     username: zheng
-    password: cheng150
-    virtual-host: /js
+    password: 123456
+    virtual-host: /test
     publisher-confirms: true
     publisher-returns: true
   sleuth:

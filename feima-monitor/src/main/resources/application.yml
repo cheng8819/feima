@@ -1,0 +1,43 @@
+logging:
+  level:
+    org.springframework.cloud.netflix.zuul.filters.post.SendErrorFilter: error
+
+server:
+  port: 6102
+
+turbine:
+  stream:
+    port: 6103
+
+eureka:
+  instance:
+    hostname: feima-eureka
+    prefer-ip-address: true
+    metadata-map:
+      user.name: ${security.user.name}
+      user.password: ${security.user.password}
+  client:
+    service-url:
+      defaultZone: http://user:123456@localhost:6001/eureka/
+
+spring:
+  rabbitmq:
+    port: 5672
+    host: 127.0.0.1
+    username: zheng
+    password: 123456
+    virtual-host: /test
+    publisher-confirms: true
+    publisher-returns: true
+  boot:
+    admin:
+      routes:
+        endpoints: env,metrics,trace,dump,jolokia,info,configprops,trace,logfile,refresh,flyway,liquibase,heapdump,loggers,auditevents,hystrix.stream
+      turbine:
+        clusters: default
+        location: http://monitor:${turbine.stream.port}
+
+security:
+  user:
+    name: user
+    password: 123456

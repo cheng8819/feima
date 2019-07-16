@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: feima-zipkin
+  rabbitmq:
+    port: 5672
+    host: 127.0.0.1
+    username: zheng
+    password: 123456
+    virtual-host: /test
+    publisher-confirms: true
+    publisher-returns: true
+
+server:
+  port: 6101
+
+security:
+  user:
+    name: user
+    password: 123456

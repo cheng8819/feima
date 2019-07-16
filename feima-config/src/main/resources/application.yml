@@ -1,0 +1,33 @@
+server:
+  port: 6003
+
+eureka:
+  instance:
+    hostname: feima-eureka
+    prefer-ip-address: true
+    metadata-map:
+      user.name: ${security.user.name}
+      user.password: ${security.user.password}
+  client:
+    service-url:
+      defaultZone: http://user:123456@localhost:6001/eureka/
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/cheng8819/feima.git
+          search-paths: config-repo
+  rabbitmq:
+    port: 5672
+    host: 127.0.0.1
+    username: zheng
+    password: 123456
+    virtual-host: /test
+    publisher-confirms: true
+    publisher-returns: true
+security:
+  user:
+    name: user
+    password: 123456
